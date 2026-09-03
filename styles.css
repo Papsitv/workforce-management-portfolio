@@ -1,38 +1,52 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+:root{
+  --accent:#007BFF;
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --muted:#6b7280;
 }
 
-header {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  text-align: center;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
 }
 
-header nav ul {
-  list-style: none;
-  padding: 0;
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:20px;
 }
 
-header nav ul li {
-  display: inline;
-  margin: 0 10px;
+.site-hero{
+  background:linear-gradient(90deg,var(--accent),#0056d6);
+  color:white;
+  padding:30px 0;
 }
+.site-hero.small{padding:18px 0}
+.site-hero .lead{margin:6px 0 12px; font-weight:600}
+.site-hero .cta{background:rgba(255,255,255,0.08);display:inline-block;padding:8px 12px;border-radius:6px}
 
-header nav ul li a {
-  color: white;
-  text-decoration: none;
-}
+.nav{list-style:none;padding:0;margin:12px 0 0;display:flex;gap:12px;flex-wrap:wrap}
+.nav li{display:inline}
+.nav a{color:white;text-decoration:none;padding:6px 8px;border-radius:4px}
+.nav a:focus,.nav a:hover{background:rgba(255,255,255,0.08)}
 
-section {
-  padding: 20px;
-}
+.card{background:var(--card);padding:18px;margin:18px 0;border-radius:8px;box-shadow:0 1px 3px rgba(16,24,40,0.04)}
+h1,h2,h3{margin:0 0 10px}
+p{margin:0 0 12px}
+ul{margin:0 0 12px;padding-left:18px}
 
-footer {
-  text-align: center;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.project{padding:12px;border-radius:6px;background:linear-gradient(180deg,#fbfbff,#fff);border:1px solid rgba(15,23,42,0.03)}
+
+.screenshot{max-width:100%;height:auto;border-radius:6px;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
+
+.button{display:inline-block;padding:10px 14px;background:var(--accent);color:white;border-radius:8px;text-decoration:none}
+.button:hover{filter:brightness(0.96)}
+
+footer{background:#0f1724;color:#e6eef8;padding:14px 0;margin-top:28px}
+
+@media (max-width:600px){.container{padding:16px}.nav{gap:8px}}

@@ -1,0 +1,11 @@
+{
+  "name": "wfm-portfolio-tools",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate-resume": "node tools/generate_resume_pdf.js"
+  },
+  "dependencies": {
+    "puppeteer": "^20.0.0"
+  }
+}
