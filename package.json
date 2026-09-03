@@ -1,4 +1,17 @@
 {
+  "name": "workforce-management-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^7.9.0",
+    "jsonwebtoken": "^9.0.0"
+  }
+}
+{
   "name": "wfm-portfolio-tools",
   "version": "1.0.0",
   "private": true,
