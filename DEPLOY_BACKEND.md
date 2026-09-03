@@ -34,6 +34,19 @@ vercel
 
 4. Use `vercel --prod` to deploy the production site.
 
+Alternative: deploy non-interactively using a Personal Token
+
+1. Create a Personal Token in Vercel: https://vercel.com/account/tokens
+2. From the repo root run (replace <TOKEN> with your token):
+
+```bash
+VERCEL_TOKEN=<TOKEN> vercel --prod --confirm
+```
+
+This environment variable allows automation without interactive login. The first deploy will create a project in your Vercel account — set the required environment variables (`SENDGRID_API_KEY`, `OWNER_EMAIL`, `SITE_URL`, `JWT_SECRET`) in the Vercel project settings after deployment.
+
+I added `vercel.json` and `.vercelignore` to this repo to make the functions deployable; commit and push these files before deploying.
+
 Notes
 - This code requires a SendGrid account (or modify to use another email provider). You are responsible for providing the API key.
 - Tokens expire after 24 hours.
