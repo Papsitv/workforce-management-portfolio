@@ -267,8 +267,80 @@
     <section id="contact">
       <h2>Contact Me</h2>
       <p>Email: <a href="mailto:lealdennis110@gmail.com">lealdennis110@gmail.com</a></p>
+      <p>Phone: +63-XXX-XXX-XXXX (replace with your number)</p>
       <p>LinkedIn: <a href="https://www.linkedin.com/in/dennis-l-0b52695b" target="_blank" rel="noopener">linkedin.com/in/dennis-l-0b52695b</a></p>
+
+      <div class="card contact-form">
+        <h3>Request a Meeting or Call</h3>
+        <p>Pick a preferred date and time; this will open your mail client with the details prefilled.</p>
+        <div class="form-row">
+          <label class="form-label">Your name</label>
+          <input class="form-input" id="req_name" type="text" placeholder="Full name">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Your email</label>
+          <input class="form-input" id="req_email" type="email" placeholder="you@example.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Your phone (optional)</label>
+          <input class="form-input" id="req_phone" type="tel" placeholder="+63...">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Preferred date & time</label>
+          <input class="form-input" id="req_datetime" type="datetime-local">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Message</label>
+          <textarea class="form-input" id="req_message" rows="3" placeholder="Short note or meeting agenda"></textarea>
+        </div>
+        <div class="form-row">
+          <label><input id="allow_resume_copy" type="checkbox"> I give permission to receive a copy of the resume</label>
+        </div>
+        <div style="margin-top:10px">
+          <button class="button" type="button" onclick="sendMeetingRequest()">Request Meeting</button>
+          <button class="button btn-secondary" type="button" onclick="downloadResume()">Request Resume (with permission)</button>
+        </div>
+        <p style="font-size:0.9em;color:#666;margin-top:8px">Note: this page opens your default mail client to send the request. No data is stored on this site.</p>
+      </div>
     </section>
+
+  <script>
+    function sendMeetingRequest(){
+      const name = document.getElementById('req_name').value || 'No name';
+      const email = document.getElementById('req_email').value || '';
+      const phone = document.getElementById('req_phone').value || '';
+      const datetime = document.getElementById('req_datetime').value || '';
+      const message = document.getElementById('req_message').value || '';
+      const allowResume = document.getElementById('allow_resume_copy').checked;
+
+      const to = 'lealdennis110@gmail.com';
+      const subject = encodeURIComponent('Meeting request from ' + name);
+      let body = '';
+      body += 'Name: ' + name + '\n';
+      if(email) body += 'Email: ' + email + '\n';
+      if(phone) body += 'Phone: ' + phone + '\n';
+      if(datetime) body += 'Preferred: ' + datetime + '\n';
+      if(message) body += '\nMessage:\n' + message + '\n';
+      body += '\nPermission to send resume copy: ' + (allowResume ? 'Yes' : 'No') + '\n';
+
+      const mailto = 'mailto:' + to + '?subject=' + subject + '&body=' + encodeURIComponent(body);
+      window.location.href = mailto;
+    }
+
+    function downloadResume(){
+      const allow = document.getElementById('allow_resume_copy').checked;
+      const email = document.getElementById('req_email').value || '';
+      if(!allow){
+        if(!confirm('You must give permission to receive a copy of the resume. Do you want to allow and download now?')) return;
+      }
+      const link = document.createElement('a');
+      link.href = 'resume.pdf';
+      link.download = 'Dennis-Leal-Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
+  </script>
   </div>
   <footer>
     <p>&copy; 2026 Dennis Leal</p>

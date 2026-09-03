@@ -47,6 +47,12 @@ ul{margin:0 0 12px;padding-left:18px}
 .button{display:inline-block;padding:10px 14px;background:var(--accent);color:white;border-radius:8px;text-decoration:none}
 .button:hover{filter:brightness(0.96)}
 
+.contact-form{margin-top:12px}
+.contact-form .form-row{margin-bottom:10px}
+.form-label{display:block;font-size:0.95rem;margin-bottom:6px;color:var(--muted)}
+.form-input{width:100%;padding:8px 10px;border:1px solid rgba(15,23,42,0.06);border-radius:6px;font-size:0.95rem}
+.btn-secondary{background:#6b7280}
+
 footer{background:#0f1724;color:#e6eef8;padding:14px 0;margin-top:28px}
 
 @media (max-width:600px){.container{padding:16px}.nav{gap:8px}}
