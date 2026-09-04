@@ -1,0 +1,7 @@
+node_modules/
+secret.txt
+.env
+dist/
+build/
+.vercel
+.env*
