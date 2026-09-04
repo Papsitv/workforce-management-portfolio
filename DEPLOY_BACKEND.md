@@ -51,3 +51,4 @@ Notes
 - This code requires a SendGrid account (or modify to use another email provider). You are responsible for providing the API key.
 - Tokens expire after 24 hours.
 - For security, change the default `JWT_SECRET` immediately when deploying.
+ - If you do not provide a `SENDGRID_API_KEY`, the endpoints will run in fallback mode: they will log incoming requests (visible in function logs) and allow direct resume download without email verification. Owner notification via email will be skipped in fallback mode.
