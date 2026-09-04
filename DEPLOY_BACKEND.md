@@ -10,10 +10,13 @@ This repo includes Vercel-compatible serverless endpoints under `/api` that:
 
 Required environment variables (set in Vercel, Render, or your host):
 
-- `SENDGRID_API_KEY` — SendGrid API key used to send emails.
 - `OWNER_EMAIL` — recipient address for owner notifications (default: lealdennis110@gmail.com).
 - `SITE_URL` — full URL where the site is hosted (e.g. https://yourdomain.com). Used to build confirmation links.
 - `JWT_SECRET` — random secret string for signing verification tokens.
+
+Optional email provider:
+
+- `SENDGRID_API_KEY` — *optional*. If provided, the API will send verification and owner notification emails via SendGrid. If you do not have a SendGrid key (or prefer not to use a paid provider), leave this unset — the API runs in safe fallback mode described below.
 
 Quick deploy (Vercel)
 
@@ -48,7 +51,6 @@ This environment variable allows automation without interactive login. The first
 I added `vercel.json` and `.vercelignore` to this repo to make the functions deployable; commit and push these files before deploying.
 
 Notes
-- This code requires a SendGrid account (or modify to use another email provider). You are responsible for providing the API key.
-- Tokens expire after 24 hours.
-- For security, change the default `JWT_SECRET` immediately when deploying.
- - If you do not provide a `SENDGRID_API_KEY`, the endpoints will run in fallback mode: they will log incoming requests (visible in function logs) and allow direct resume download without email verification. Owner notification via email will be skipped in fallback mode.
+ - Tokens expire after 24 hours.
+ - For security, change the default `JWT_SECRET` immediately when deploying.
+ - If you do not provide a `SENDGRID_API_KEY`, the endpoints run in a safe fallback mode: requests are logged (visible in function logs), resume downloads are returned directly (no verification email), and owner notification emails are skipped. This fallback ensures the site and contact flow work without any paid third-party service.
