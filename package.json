@@ -10,6 +10,9 @@
   "dependencies": {
     "@sendgrid/mail": "^7.9.0",
     "jsonwebtoken": "^9.0.0",
+    
+  }
+  "devDependencies": {
     "puppeteer": "^20.0.0"
   }
 }
